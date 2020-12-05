@@ -27,9 +27,6 @@ import numpy as np
 import networkx as nx
 from google.cloud import speech
 
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.feature_extraction import sk_text
-
 
 def upload_video(file_name):
     storageCli = storage.Client()
@@ -78,7 +75,7 @@ def transcribe_video(mp4_file):
     f = open("file.txt", "w+")
     f.write(text)
     f.close()
-    generate_summary("file.txt", 2)
+    generate_summary("file.txt", 5)
     return
 
 
@@ -138,14 +135,6 @@ def build_similarity_matrix(sentences, stop_words):
 
 def generate_summary(file_name, top_n):
 
-    file = open(file_name, "r")
-    text = file.read()
-
-    vectorizer = TfidfVectorizer(stop_words=sk_text.ENGLISH_STOP_WORDS)
-    vectors = vectorizer.fit_transform(text)
-    feature_names = vectorizer.get_feature_names()
-    print(feature_names)
-
     try:
         _create_unverified_https_context = ssl._create_unverified_context
     except AttributeError:
@@ -176,9 +165,6 @@ def generate_summary(file_name, top_n):
     for i in range(top_n):
         summarize_text.append(" ".join(ranked_sentence[i][1]))
         summarize = '. '.join(summarize_text)
-
-        # Step 5 - Offcourse, output the summarize texr
-    print(summarize)
 
     f = open("summary.txt", "w+")
     f.write(summarize)
