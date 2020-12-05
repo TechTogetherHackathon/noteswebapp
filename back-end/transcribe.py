@@ -48,11 +48,11 @@ def process_file(file):
     return audio_file
 
 
-def transcribe_video(mp4_file):
-    upload_video('audio.flac')
+def transcribe_video(file_name):
+    upload_video(file_name)
     client = speech.SpeechClient()
 
-    audio = speech.RecognitionAudio(uri="gs://transcribevideos/audio.flac")
+    audio = speech.RecognitionAudio(uri="gs://transcribevideos/" + file_name)
     config = speech.RecognitionConfig(
         encoding=speech.RecognitionConfig.AudioEncoding.FLAC,
         language_code="en-US",
@@ -173,7 +173,8 @@ def generate_summary(file_name, top_n):
 
 
 if __name__ == "__main__":
-    file_name = "../Quick sort in 4 minutes.mp4"
+
+    file_name = 'audio.flac'
 
     transcribe_video(file_name)
     # generate_summary("file.txt", 2)
