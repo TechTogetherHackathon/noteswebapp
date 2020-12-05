@@ -6,9 +6,19 @@ from datetime import datetime
 import moviepy.editor as mp
 
 #from google.cloud import speech_v1 as speech
-import SpeechRecognition as sr
+import speech_recognition as sr
 from os import path
 from pydub import AudioSegment
+from pydub.silence import split_on_silence
+import ffmpeg
+import nltk
+from nltk.corpus import stopwords
+import nltk
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize, sent_tokenize
+
+
+paragraph = "Calgary remains the centre of the province’s coronavirus outbreak, with 378 (61 per cent) of Alberta’s case coming in the AHS Calgary zone, including 325 cases within Calgary’s city limits. The Edmonton zone has 22 per cent of cases, the second-most in the province. More than 42,500 Albertans have now been tested for COVID-19, meaning nearly one in every 100 Albertans have received a test. About 1.5 per cent of those tests have come back positive. Rates of testing in Alberta jolted back up on Friday, with more than 3,600 conducted — the most yet in a single day. The surge followed one of Alberta’s lowest testing days Thursday, as the province shifted its testing focus away from returning travellers and towards health-care workers and vulnerable populations, including those in hospital or living in continuing care facilities."
 
 
 def upload_video(file_name):
@@ -32,55 +42,58 @@ def process_file(file):
 
 
 def transcribe_video(mp4_file):
-    audio_file_name = process_file(mp4_file)
-
-    sound = AudioSegment.from_mp3(audio_file_name)
-
-    sound.export("audio.wav", format="wav")
-
-    # transcribe audio file
-    AUDIO_FILE = "audio.wav"
-
-    # use the audio file as the audio source
     r = sr.Recognizer()
-    with sr.AudioFile(AUDIO_FILE) as source:
-        audio = r.record(source)  # read the entire audio file
+    harvard = sr.AudioFile('test.wav')
+    with harvard as source:
+        audio = r.record(source)
 
-        print("Transcription: " + r.recognize_google(audio))
+    text = r.recognize_google(audio, language='en-US')
+    print(text)
+    text = paragraph
+    # Tokenizing the text
+    stopWords = set(stopwords.words("english"))
+    words = word_tokenize(text)
 
-    return
+    # Creating a frequency table to keep the
+    # score of each word
 
-#     audio_file = "../audio.ogg"
-#     upload_video(audio_file)
+    freqTable = dict()
+    for word in words:
+        word = word.lower()
+        if word in stopWords:
+            continue
+        if word in freqTable:
+            freqTable[word] += 1
+        else:
+            freqTable[word] = 1
 
-#     client = speech.SpeechClient()
-#     audio = speech.RecognitionAudio(
-#         uri="gs://" + "transcribevideos" + "/" + audio_file)
-#     config = speech.RecognitionConfig(
-#         encoding=speech.RecognitionConfig.AudioEncoding.OGG_OPUS,
-#         language_code='en-US',
-#         sample_rate_hertz=16000,
-#         enable_word_time_offsets=True
-#     )
-#     operation = client.long_running_recognize(config, audio)
+    # Creating a dictionary to keep the score
+    # of each sentence
+    sentences = sent_tokenize(text)
+    sentenceValue = dict()
 
-#     if not operation.done():
-#         print('Waiting for results...')
+    for sentence in sentences:
+        for word, freq in freqTable.items():
+            if word in sentence.lower():
+                if sentence in sentenceValue:
+                    sentenceValue[sentence] += freq
+                else:
+                    sentenceValue[sentence] = freq
 
-#         result = operation.result()
+    sumValues = 0
+    for sentence in sentenceValue:
+        sumValues += sentenceValue[sentence]
 
-#         results = result.results
+    # Average value of a sentence from the original text
 
-#         raw_text_file = open(audio_file + '.txt', 'w+')
-#         for result in results:
-#             for alternative in result.alternatives:
-#                 raw_text_file.write(alternative.transcript + '\n')
-#         raw_text_file.close()  # output raw text file of transcription
+    average = int(sumValues / len(sentenceValue))
 
-#         # output .srt formatted version of transcription
-#         #format_transcript(results, audio_file)
-#     else:
-#         return
+    # Storing sentences into our summary.
+    summary = ''
+    for sentence in sentences:
+        if (sentence in sentenceValue) and (sentenceValue[sentence] > (1.2 * average)):
+            summary += " " + sentence
+    print(summary)
 
 
 if __name__ == "__main__":
