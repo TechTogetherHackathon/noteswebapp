@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "techtogethernewyork",
+  "private_key_id": "4c4fef621760230f20dc0d62c8bfd26d3f967b14",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCcjkIVmTWNesSI\nuCq+D8REJJG3nD9TwrfNROvi90/06RtdbJPL3fIDKCoBvxOJE4Cw3dxu7i8MgjWk\nbok5U0zkM3Uod1J/fZqSOQK4BlZmH/RQmpat/NMsiRUfNrERg7Pf4Xd0/MUjs1xj\nofc5TCDem0nwVVv8qNADRRF3bOk1d9ktCtRTFMCCHIyC6vkJwsLMAG4oIJQmvlqu\nnbE6KNBi9Yv6dz9jthi2pldV1N0uDNtceEIG9E+5LdLm5rv7h9aERHqadqeCbKtX\n9UMaMRr+DaOpZjUAu5H+8DddGIWJiCqv939HsopXL/VuRQs3qE5Ne7WKi1TVPx9F\nUs25lzmjAgMBAAECggEACGFz95Y5iZOj9+uswhSAl0moquSu3fi2mfYrQhdAjP95\n99c+b2a352P1h7cAwGquWqMUNoE11ilJEaUNkueHxLZdrbP7H+Vx6lgp8jIvDg1+\ndZHCjv+efSvwP2w2lpW8NQTSJI2WSHh4C1wmxC1am+Z1OVJG3j1aBIRkg6xtX++V\nv3LupZOXVSJGuxmloXuXGq3RpO81yQzVNL5DerxPIg5jZlclF5T/5FhbvtzgahDg\nlmLYkX25ebHVtxv9EXFfuDb34hZoUki85SSH9JY+y4snTNwCYclmFtMFrKKVVrzq\n/1jQZQFhUTrG3Tlu+9tBHi4R7j49jH5nGW/Q5SvtiQKBgQDQ9ENZlVVWgy/p4i0S\nEqCRr+qLVIh/IreAFDBUEtEUX5TzTQU0dBetLCsHlxpjgPGmFO0kRPwJF3DuzA31\nXKdPdZeKeRfAsNRigdV0SWIwdIhy7IYPm8VbHZd8G6Mmk0kGub9vLTBI6IV5XJAn\nR/tBNRw+zO6LUtat+sdysAMI2wKBgQC/zdfpnkIrAaU+gfq2hpzRjPm0EiWp+q2S\nPaX3BJSqoIQqQ8oKvK3ggh96y7GLo2UFPwDmb8M29rmdLMwNM7fDFyXxqntO4bAL\nhXRHIl+2I2y2jmLELU8hPjbnGzuQ7/eTjp2Y7YZXGoZfUahTCnIhQRdIBGNS8hAI\nZshViy+o2QKBgQChxer6yV33i7ultOE2E8vS30KUOo8u9v7gn0DHZoYO4u1b7K5x\n7MuD3CU4TCk3DlaIQb1TjkEe/NIHX14TL3etUhpQL+5O1diop2JOFJ57a01UxIAK\nR4xlPaTRhkgrDm7EUTy/41l1qOfljN9iOh1xX6ANkvXAUhM5QWX3CgRfbwKBgQCv\nu9vNcnDRkopiQRkCz0czP+UxNUdI/CK30MAVGR9VTgiJ6N5fBAyTnOVWzvZ3KFfQ\nfK9IcrH71AawmXDDz9TYbIcZasfbuDBh/f5Rho8HBGIAyWh4scLEhIotKOhknVjK\n22pNyaLCf80J3HlKzFFRYqAAHfUa9Cn4aKO4rPQX0QKBgHAnHDCz0LZeXp1T84gy\natZ6T9VHt9xP1OYG5mKhO2J04NVc/Yy8APmCujuqQNvYCwHVhl0Y6plq7KcHABBz\nYKL64q4vvQ4M+m1Be99zoNxMpp6GD+GFAIWdvUksyqHcQkq4MugTowoYXQ6yIiBk\nSdcVf5TSYfnPDRvSrRuc0ghi\n-----END PRIVATE KEY-----\n",
+  "client_email": "rav-kaur@techtogethernewyork.iam.gserviceaccount.com",
+  "client_id": "109723571589817994639",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/rav-kaur%40techtogethernewyork.iam.gserviceaccount.com"
+}

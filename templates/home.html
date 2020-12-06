@@ -1,39 +1,60 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../static/styles.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-</head>
-<div class="header">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <div class="header">
     <img src="../static/test.jpeg" alt="logo" />
-</div>
+  </div>
 
-<body>
-    <div class="zone">
-        <div class="drop-zone">
-            <span class="drop-zoneprompt"></span>
-            <input type="file" name="myFile" class="drop-zoneinput" />
-            <div style="font-size: 250px; margin-bottom: 0px;position: absolute;margin-left: 30%;">
-                <i class="fa fa-cloud-upload"></i>
-            </div>
-        </div>
-        <div class="drag">
-            <h1>Drag and drop your file here</h1>
-            <h2>Or</h2>
-            <form>
-                <input type="file" id="file-upload" multiple required />
-                <label for="file-upload">Choose a</label>
-                <div id="file-upload-filename"></div>
-            </form>
-            <br />
-        </div>
-        <button type="button" onclick="myFunction()">Submit</button>
-        <p>File size limit : 10 MB</p>
+  <body>
+    <div class="area">
+      <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-
-
+    <div class="zone">
+      <div class="drop-zone">
+        <span class="drop-zoneprompt"></span>
+        <input type="file" name="myFile" class="drop-zoneinput" />
+        <div
+          style="
+            font-size: 250px;
+            margin-bottom: 0px;
+            position: absolute;
+            margin-left: 30%;
+          "
+        >
+          <i class="fa fa-cloud-upload"></i>
+        </div>
+      </div>
+      <div class="drag">
+        <h1>Drag and drop your file here</h1>
+        <h2>Or</h2>
+        <form>
+          <input type="file" id="file-upload" multiple required />
+          <label for="file-upload">Choose a</label>
+          <div id="file-upload-filename"></div>
+        </form>
+        <br />
+      </div>
+      <button type="button" onclick="myFunction()">Submit</button>
+      <p>File size limit : 10 MB</p>
+    </div>
 
     <!-- <div class="zone">
         <div id="dropZ">
@@ -52,105 +73,105 @@
     </div> -->
 
     <script>
+      document.querySelectorAll(".drop-zoneinput").forEach((inputElement) => {
+        const dropZoneElement = inputElement.closest(".drop-zone");
 
-        document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
-            const dropZoneElement = inputElement.closest(".drop-zone");
-
-            dropZoneElement.addEventListener("click", (e) => {
-                inputElement.click();
-            });
-
-            inputElement.addEventListener("change", (e) => {
-                if (inputElement.files.length) {
-                    updateThumbnail(dropZoneElement, inputElement.files[0]);
-                }
-            });
-
-            dropZoneElement.addEventListener("dragover", (e) => {
-                e.preventDefault();
-                dropZoneElement.classList.add("drop-zone--over");
-            });
-
-            ["dragleave", "dragend"].forEach((type) => {
-                dropZoneElement.addEventListener(type, (e) => {
-                    dropZoneElement.classList.remove("drop-zone--over");
-                });
-            });
-
-            dropZoneElement.addEventListener("drop", (e) => {
-                e.preventDefault();
-
-                if (e.dataTransfer.files.length) {
-                    inputElement.files = e.dataTransfer.files;
-                    updateThumbnail(dropZoneElement, e.dataTransfer.files[0]);
-                }
-
-                dropZoneElement.classList.remove("drop-zone--over");
-            });
+        dropZoneElement.addEventListener("click", (e) => {
+          inputElement.click();
         });
 
-        /**
-         * Updates the thumbnail on a drop zone element.
-         *
-         * @param {HTMLElement} dropZoneElement
-         * @param {File} file
-         */
-        function updateThumbnail(dropZoneElement, file) {
-            let thumbnailElement = dropZoneElement.querySelector(".drop-zone__thumb");
+        inputElement.addEventListener("change", (e) => {
+          if (inputElement.files.length) {
+            updateThumbnail(dropZoneElement, inputElement.files[0]);
+          }
+        });
 
-            // First time - remove the prompt
-            if (dropZoneElement.querySelector(".drop-zone__prompt")) {
-                dropZoneElement.querySelector(".drop-zone__prompt").remove();
-            }
+        dropZoneElement.addEventListener("dragover", (e) => {
+          e.preventDefault();
+          dropZoneElement.classList.add("drop-zone--over");
+        });
 
-            // First time - there is no thumbnail element, so lets create it
-            if (!thumbnailElement) {
-                thumbnailElement = document.createElement("div");
-                thumbnailElement.classList.add("drop-zone__thumb");
-                dropZoneElement.appendChild(thumbnailElement);
-            }
+        ["dragleave", "dragend"].forEach((type) => {
+          dropZoneElement.addEventListener(type, (e) => {
+            dropZoneElement.classList.remove("drop-zone--over");
+          });
+        });
 
-            thumbnailElement.dataset.label = file.name;
+        dropZoneElement.addEventListener("drop", (e) => {
+          e.preventDefault();
 
-            // Show thumbnail for image files
-            if (file.type.startsWith("image/")) {
-                const reader = new FileReader();
+          if (e.dataTransfer.files.length) {
+            inputElement.files = e.dataTransfer.files;
+            updateThumbnail(dropZoneElement, e.dataTransfer.files[0]);
+          }
 
-                reader.readAsDataURL(file);
-                reader.onload = () => {
-                    thumbnailElement.style.backgroundImage = `url('${reader.result}')`;
-                };
-            } else {
-                thumbnailElement.style.backgroundImage = null;
-            }
+          dropZoneElement.classList.remove("drop-zone--over");
+        });
+      });
+
+      /**
+       * Updates the thumbnail on a drop zone element.
+       *
+       * @param {HTMLElement} dropZoneElement
+       * @param {File} file
+       */
+      function updateThumbnail(dropZoneElement, file) {
+        let thumbnailElement = dropZoneElement.querySelector(
+          ".drop-zone__thumb"
+        );
+
+        // First time - remove the prompt
+        if (dropZoneElement.querySelector(".drop-zone__prompt")) {
+          dropZoneElement.querySelector(".drop-zone__prompt").remove();
         }
 
-        // submit function
-        function myFunction(input) {
-            var input = $('#file-upload').val();
-            var summary = ""
-            console.log(input)
-            $.ajax({
-                url: "/upload",
-                type: "POST",
-                data: {
-                    input: input
-                }
-            }).done(function (response) {
-                transcript = response.transcript
-                summary = response.summary;
-                console.log("done")
-            }).then(() => {
-                var url = "http://127.0.0.1:5000/transcribe/" + transcript + "?" + summary
-                window.location.href = url
-
-                console.log("done2");
-            });
+        // First time - there is no thumbnail element, so lets create it
+        if (!thumbnailElement) {
+          thumbnailElement = document.createElement("div");
+          thumbnailElement.classList.add("drop-zone__thumb");
+          dropZoneElement.appendChild(thumbnailElement);
         }
 
+        thumbnailElement.dataset.label = file.name;
 
+        // Show thumbnail for image files
+        if (file.type.startsWith("image/")) {
+          const reader = new FileReader();
 
+          reader.readAsDataURL(file);
+          reader.onload = () => {
+            thumbnailElement.style.backgroundImage = `url('${reader.result}')`;
+          };
+        } else {
+          thumbnailElement.style.backgroundImage = null;
+        }
+      }
+
+      // submit function
+      function myFunction(input) {
+        var input = $("#file-upload").val();
+        var summary = "";
+        console.log(input);
+        $.ajax({
+          url: "/upload",
+          type: "POST",
+          data: {
+            input: input,
+          },
+        })
+          .done(function (response) {
+            transcript = response.transcript;
+            summary = response.summary;
+            console.log("done");
+          })
+          .then(() => {
+            var url =
+              "http://127.0.0.1:5000/transcribe/" + transcript + "?" + summary;
+            window.location.href = url;
+
+            console.log("done2");
+          });
+      }
     </script>
-</body>
-
+  </body>
 </html>
