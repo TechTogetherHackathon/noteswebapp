@@ -7,7 +7,13 @@
   background: #555;
   border-bottom: #bdc3c7 2px solid;
 }
-
+.iconImage > i {
+  width: 300px;
+  height: 100px;
+}
+.fa-cloud-upload:before {
+  font-size: 250px;
+}
 .header h1 {
   position: relative;
   top: 18px;
@@ -19,13 +25,14 @@ body {
   background: #ffffff;
   font-family: "Exo 2";
 }
+
 .drag h1 {
   font-size: 25px;
   margin-top: -200px;
 }
 
 .drag h2 {
-  font-size: 15px;
+  font-size: 20px;
 }
 [type="file"] {
   border: 0;
@@ -59,9 +66,10 @@ body {
   left: 0;
   bottom: 0;
   right: 0;
-  margin-top: 140px;
+  margin-top: 120px;
   background: radial-gradient(ellipse at center, #47daa1f5 0, #1abc9c 100%);
   width: 70%;
+  border-radius: 30px;
   height: 80%;
   border: 5px dashed white;
   text-align: center;
@@ -94,7 +102,7 @@ button {
   text-decoration: none;
   display: inline-block;
   font-size: 30px;
-  margin-top: 100px;
+  margin-top: 10px;
   border-radius: 30px;
   width: 200px;
   cursor: pointer;
@@ -200,14 +208,11 @@ button {
 
 .drop-zone--over {
   border-style: solid;
-  background-color: #bdc3c7;
+  background-color: #bdc3c760;
 }
 
 .drop-zone__input {
   display: none;
-}
-.drop-zone:hover {
-  background-color: #bdc3c7;
 }
 
 .drop-zone__thumb {
@@ -234,8 +239,8 @@ button {
 }
 
 .area {
-  background: #4e54c8;
-  background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
+  background: #ffffff;
+  background: -webkit-linear-gradient(to left, #ffffff, #dad8d8f1);
   width: 100%;
   height: 100vh;
 }
@@ -255,7 +260,7 @@ button {
   list-style: none;
   width: 20px;
   height: 20px;
-  background: rgba(255, 255, 255, 0.2);
+  background: #1abc9c;
   animation: animate 25s linear infinite;
   bottom: -150px;
 }
