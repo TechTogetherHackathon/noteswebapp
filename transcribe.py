@@ -135,12 +135,14 @@ def build_similarity_matrix(sentences, stop_words):
 
     return similarity_matrix
 
+
 def filter_by_keyword(file_name, keyword):
     with open(file_name, 'r') as inF:
         for line in inF:
             if keyword in line:
                 print("found it!")
         print("done")
+
 
 def generate_summary(file_name, top_n):
 

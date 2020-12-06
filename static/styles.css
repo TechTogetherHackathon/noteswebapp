@@ -7,12 +7,21 @@
   background: #555;
   border-bottom: #bdc3c7 2px solid;
 }
-.iconImage > i {
-  width: 300px;
-  height: 100px;
+.iconImage {
+  font-size: 250px;
+  margin-bottom: 0px;
+  position: absolute;
+  margin-left: 27%;
+  height: 30%;
+}
+@media screen and (min-width: 900px) {
+  #iconImage {
+    width: 90%;
+  }
 }
 .fa-cloud-upload:before {
   font-size: 250px;
+  margin-left: -15%;
 }
 .header h1 {
   position: relative;
@@ -83,9 +92,26 @@ body {
   }
 }
 
+.zone2 {
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin-top: 120px;
+  width: 70%;
+  border-radius: 30px;
+  height: 80%;
+  border: 5px dashed white;
+  text-align: center;
+  color: white;
+  z-index: 20;
+}
+
 video {
   margin: auto;
-  width: 70%;
+  width: 96%;
   height: 70%;
   border: 3px solid green;
   padding: 10px;
