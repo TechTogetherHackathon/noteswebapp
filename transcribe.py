@@ -75,8 +75,11 @@ def transcribe_video(file_name):
     f = open("file.txt", "w+")
     f.write(text)
     f.close()
-    generate_summary("file.txt", 5)
-    return
+    summ = generate_summary("file.txt", 5)
+    results = []
+    results.append(text)
+    results.append(summ)
+    return results
 
 
 def read_article(file_name):
@@ -132,6 +135,12 @@ def build_similarity_matrix(sentences, stop_words):
 
     return similarity_matrix
 
+def filter_by_keyword(file_name, keyword):
+    with open(file_name, 'r') as inF:
+        for line in inF:
+            if keyword in line:
+                print("found it!")
+        print("done")
 
 def generate_summary(file_name, top_n):
 
@@ -142,9 +151,6 @@ def generate_summary(file_name, top_n):
     else:
         ssl._create_default_https_context = _create_unverified_https_context
 
-    nltk.download()
-
-    nltk.download("stopwords")
     stop_words = stopwords.words('english')
     summarize_text = []
 
@@ -162,6 +168,10 @@ def generate_summary(file_name, top_n):
     ranked_sentence = sorted(
         ((scores[i], s) for i, s in enumerate(sentences)), reverse=True)
 
+    # avoid out of bounds error by limiting top_n to be max number of sentences in the text
+    if top_n > len(sentences):
+        top_n = len(sentences)
+
     for i in range(top_n):
         summarize_text.append(" ".join(ranked_sentence[i][1]))
         summarize = '. '.join(summarize_text)
@@ -169,12 +179,13 @@ def generate_summary(file_name, top_n):
     f = open("summary.txt", "w+")
     f.write(summarize)
     f.close()
-    return
+    return summarize
 
 
 if __name__ == "__main__":
 
     file_name = 'audio.flac'
 
-    transcribe_video(file_name)
+    # transcribe_video(file_name)
+    filter_by_keyword("file.txt", "mergesort")
     # generate_summary("file.txt", 2)

@@ -1,1 +1,0 @@
-Next we're going to look for two items item from left, which is the first item starting from the left that is larger than our pivot. We swap item from left with our pivot
