@@ -1,30 +1,47 @@
 @import url(https://fonts.googleapis.com/css?family=Exo+2:400,700,500,300);
 
+.header img {
+  float: left;
+  width: 200px;
+  height: 80px;
+  background: #555;
+  border-bottom: #bdc3c7 2px solid;
+}
+
+.header h1 {
+  position: relative;
+  top: 18px;
+  left: 10px;
+  color: #1abc9c;
+  border-bottom: #bdc3c7 2px solid;
+}
 body {
-  background: #ebeff2;
+  background: #ffffff;
   font-family: "Exo 2";
 }
 .drag h1 {
-  font-size: 20px;
-  margin-top: 2px;
+  font-size: 25px;
+  margin-top: -200px;
 }
 
 .drag h2 {
   font-size: 15px;
 }
-.inputfile {
-  width: 0.1px;
-  height: 0.1px;
-  opacity: 0;
+[type="file"] {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
   overflow: hidden;
-  position: absolute;
-  z-index: -1;
+  padding: 0;
+  position: absolute !important;
+  white-space: nowrap;
+  width: 1px;
 }
 
-.inputfile + label {
+[type="file"] + label {
   font-size: 1.7em;
   /* font-weight: 700; */
-  color: rgba(238, 73, 8, 0.918);
+  color: black;
   background-color: white;
   display: inline-block;
   cursor: pointer;
@@ -32,9 +49,9 @@ body {
   height: 35px;
   padding: 10px;
   align-items: center;
+  border-radius: 30px;
 }
 
-.inputfile:focus + label,
 .zone {
   margin: auto;
   position: absolute;
@@ -42,87 +59,171 @@ body {
   left: 0;
   bottom: 0;
   right: 0;
-  background: radial-gradient(ellipse at center, #eb6a5a 0, #c9402f 100%);
-  width: 90%;
-  height: 70%;
+  margin-top: 140px;
+  background: radial-gradient(ellipse at center, #47daa1f5 0, #1abc9c 100%);
+  width: 70%;
+  height: 80%;
   border: 5px dashed white;
   text-align: center;
   color: white;
   z-index: 20;
-  transition: all 0.3s ease-out;
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05),
     inset 0 0 0.25em 0 rgba(0, 0, 0, 0.25);
-  .btnCompression {
-    .btn {
-    }
-    .active {
-      background: #eb6a5a;
-      color: white;
-    }
-  }
-  i {
-    text-align: center;
-    font-size: 10em;
-    color: #fff;
-    margin-top: 50px;
-  }
-
-  label,
-  input {
-    cursor: pointer;
-    display: block;
-    height: 50px;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    border-radius: 5px;
-  }
-
-  label {
-    background: #fff;
-    color: #eb6a5a;
-    display: inline-block;
-    font-size: 1.2em;
-    line-height: 50px;
-    padding: 0;
-    text-align: center;
-    white-space: nowrap;
-    text-transform: uppercase;
-    font-weight: 400;
-    box-shadow: 0 1px 1px gray;
-  }
 
   input[type="file"] {
     opacity: 0;
   }
 }
-.zone.in {
+
+video {
+  margin: auto;
+  width: 70%;
+  height: 70%;
+  border: 3px solid green;
+  padding: 10px;
+  display: block;
+  margin-bottom: 0;
+}
+
+button {
+  background-color: #1b3cce; /* Green */
+  border: none;
   color: white;
-  border-color: white;
-  background: radial-gradient(ellipse at center, #eb6a5a 0, #c9402f 100%);
-  i {
-    color: #fff;
-  }
-  label {
-    background: #fff;
-    color: #25a565b2;
-  }
+  padding: 8px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30px;
+  margin-top: 100px;
+  border-radius: 30px;
+  width: 200px;
 }
-.zone.hover {
-  color: gray;
-  border-color: white;
+
+.wrapper {
+  max-width: 64rem;
+  width: 100%;
+  margin: 0 auto;
+}
+.tabs {
+  position: relative;
+  margin: 1rem 0;
+  background: #1abc9c;
+}
+.tabs::before,
+.tabs::after {
+  content: "";
+  display: table;
+}
+.tabs::after {
+  clear: both;
+}
+.tab {
+  float: left;
+}
+.tab-switch {
+  display: none;
+}
+.tab-label {
+  position: relative;
+  display: block;
+  line-height: 2.75em;
+  height: 3em;
+  padding: 0 1.618em;
+  background: #1abc9c;
+  border-right: 0.125rem solid #16a085;
+  color: #fff;
+  cursor: pointer;
+  top: 0;
+  transition: all 0.25s;
+}
+.tab-label:hover {
+  top: -0.25rem;
+  transition: top 0.25s;
+}
+.tab-content {
+  position: absolute;
+  z-index: 1;
+  top: 2.75em;
+  left: 0;
+  padding: 1.618rem;
   background: #fff;
-  border: 5px dashed gray;
-  i {
-    color: #eb6a5a;
-  }
-  label {
-    background: #fff;
-    color: #25a565b2;
+  color: #2c3e50;
+  border-bottom: 0.25rem solid #bdc3c7;
+  opacity: 0;
+  transition: all 0.35s;
+  width: 100%;
+}
+.tab-switch:checked + .tab-label {
+  background: #fff;
+  color: #2c3e50;
+  border-bottom: 0;
+  border-right: 0.125rem solid #fff;
+  transition: all 0.35s;
+  z-index: 1;
+  top: -0.0625rem;
+}
+.tab-switch:checked + label + .tab-content {
+  z-index: 2;
+  opacity: 1;
+  transition: all 0.35s;
+}
+
+.download {
+  width: 200px;
+  margin: 10px;
+  margin-left: 350px;
+  margin-top: 50px;
+  background: #1abc9c;
+}
+
+.drop-zone {
+  margin: auto;
+
+  position: relative;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  width: 60%;
+  height: 80%;
+  margin-top: 20px;
+  text-align: center;
+  color: white;
+  z-index: 20;
+
+  input[type="file"] {
+    opacity: 0;
   }
 }
-.zone.fade {
-  transition: all 0.3s ease-out;
-  opacity: 1;
+
+.drop-zone--over {
+  border-style: solid;
+}
+
+.drop-zone__input {
+  display: none;
+}
+
+.drop-zone__thumb {
+  width: 100%;
+  height: 90%;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #cccccc;
+  background-size: cover;
+  position: relative;
+}
+
+.drop-zone__thumb::after {
+  content: attr(data-label);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 5px 0;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.75);
+  font-size: 14px;
+  text-align: center;
 }

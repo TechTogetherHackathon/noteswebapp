@@ -75,7 +75,7 @@ def transcribe_video(file_name):
     f = open("file.txt", "w+")
     f.write(text)
     f.close()
-    summ = generate_summary("file.txt", 5)
+    summ = generate_summary("file.txt", 6)
     results = []
     results.append(text)
     results.append(summ)

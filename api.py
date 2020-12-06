@@ -16,7 +16,6 @@ def home():
 @app.route('/transcribe/<data>')
 def show_results(data):
     print(str(data))
-    # summary = request.form['summary']
     return render_template("secondPage.html")
 
 @app.route('/upload', methods=['GET','POST'])
@@ -27,6 +26,6 @@ def my_form_post():
     results = []
     results = transcribe_video(file_name)
     return jsonify(transcript=results[0], summary=results[1])
-    # return jsonify(summary=summary)
+
 if __name__ == '__main__':
     app.run(debug=True)
