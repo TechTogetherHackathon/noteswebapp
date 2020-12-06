@@ -25,10 +25,29 @@
           accept="video/*"
         />
         <label for="file">Choose a file</label>
+        <br/>
+        <button type="button">Submit</button>
 
         <p>File size limit : 10 MB</p>
       </div>
     </div>
     <script src="test.js"></script>
+    <script>
+      fetch("test.py")
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Bad Response");
+          }
+          return response.text();
+        })
+        .then(
+          (text) => (document.getElementById("portfolio-code").innerText = text)
+        )
+        .catch(
+          (errror) =>
+            (document.getElementById("portfolio-code").innerText =
+              "Unable to fetch portfolio, try again later")
+        );
+    </script>
   </body>
 </html>

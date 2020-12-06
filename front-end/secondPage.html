@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="videoplayer">
+      <video width="320" height="240" controls>
+        <source src="test.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <div class="row">
+      <div class="column">
+        <div class="card">
+          <p>bfjsfsjkdfjsdfshdjfsd</p>
+        </div>
+        <div class="column">
+          <div class="card">
+            <p>bfjsfsjkdfjsdfshdjfsd</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="test.js"></script>
+    <script>
+      fetch("test.py")
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Bad Response");
+          }
+          return response.text();
+        })
+        .then(
+          (text) => (document.getElementById("portfolio-code").innerText = text)
+        )
+        .catch(
+          (errror) =>
+            (document.getElementById("portfolio-code").innerText =
+              "Unable to fetch portfolio, try again later")
+        );
+    </script>
+  </body>
+</html>
