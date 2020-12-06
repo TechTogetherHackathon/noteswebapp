@@ -3,21 +3,82 @@
   <head>
     <link rel="stylesheet" href="styles.css" />
   </head>
+  <div class="header">
+    <img src="test.jpeg" alt="logo" />
+  </div>
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
   <body>
     <div class="videoplayer">
       <video width="320" height="240" controls>
         <source src="test.mp4" type="video/mp4" />
       </video>
     </div>
+    <div class="wrapper">
+      <div class="tabs">
+        <div class="tab">
+          <input
+            type="radio"
+            name="css-tabs"
+            id="tab-1"
+            checked
+            class="tab-switch"
+          />
+          <label for="tab-1" class="tab-label">Transcription</label>
+          <div class="tab-content">
+            We made made a microservice out of a pre-trained BERT model to
+            summarize text, and an Express web server that works with Vue for
+            the UI to make a web app. The web app accepts video uploads, sends
+            the video to Azure's Speech-to-Text API to get a full transcript,
+            sends the transcript to the microservice to get a summary with
+            timestamps, and sends the summary and timestamps to Vue for display
+            and video playback. Challenges we ran into Managing cloud platform
+            credentials in a team of 4 was difficult. Coordinating ourselves to
+            avoid duplicating work. Managing packages and dependencies. Scope
+            creep. Timestamps need to formatted to "minutes : seconds".
+            Accomplishments that we're proud of Most technically sophisticated
+            hackathon project so far, as the project has many moving parts like
+            Azure Media Services (for video playback), Azure Cognitive Services
+            (for the Speech-to-Text API), and BERT (for text summarization). Fun
+            name ;) What we learned CORS, JavaScript Promises, Microservice
+            Architecturestamps, and sends the summary and timestamps to Vue for
+            display and video playback. Challenges we ran into Managing cloud
+            platform credentials in a team of 4 was difficult. Coordinating
+            ourselves to avoid duplicating work. Managing packages and
+            dependencies. Scope creep. Timestamps need to formatted to "minutes
+            : seconds". Accomplishments that we're proud of Most technically
+            sophisticated hackathon project so far, as the project has many
+            moving parts like Azure Media Services (for video playback), Azure
+            Cognitive Services (for the Speech-to-Textstamps, and sends the
+            summary and timestamps to Vue for display and video playback.
+            Challenges we ran into Managing cloud platform credentials in a team
+            of 4 was difficult. Coordinating ourselves to avoid duplicating
+            work. Managing packages and dependencies. Scope creep. Timestamps
+            need to formatted to "minutes : seconds". Accomplishments that we're
+            proud of Most technically sophisticated hackathon project so far, as
+            the project has many moving parts like Azure Media Services (for
+            video playback), Azure Cognitive Services (for the Speech-to-Text
 
-    <div class="row">
-      <div class="column">
-        <div class="card">
-          <p>bfjsfsjkdfjsdfshdjfsd</p>
+            <br />
+            <button class="download">Download</button>
+          </div>
         </div>
-        <div class="column">
-          <div class="card">
-            <p>bfjsfsjkdfjsdfshdjfsd</p>
+        <div class="tab">
+          <input type="radio" name="css-tabs" id="tab-2" class="tab-switch" />
+          <label for="tab-2" class="tab-label">Summary</label>
+          <div class="tab-content">
+            My father now and then sending me small sums of money, I laid them
+            out in learning navigation, and other parts of the mathematics,
+            useful to those who intend to travel, as I always believed it would
+            be, some time or other, my fortune to do.
+
+            <br />
+
+            <button class="download">Download</button>
           </div>
         </div>
       </div>
