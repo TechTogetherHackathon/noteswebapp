@@ -12,28 +12,30 @@
   </div>
   <body>
     <div class="zone">
-      <div id="dropZ">
-        <div style="font-size: 250px; margin-bottom: 0px">
+      <div class="drop-zone">
+        <span class="drop-zone__prompt"></span>
+        <input type="file" name="myFile" class="drop-zone__input" />
+        <div style="font-size: 250px; margin-bottom: 0px;position: absolute;margin-left: 30%;" >
           <i class="fa fa-cloud-upload"></i>
         </div>
+      </div>
         <div class="drag">
           <h1>Drag and drop your file here</h1>
           <h2>Or</h2>
+          <form>
+            <input type="file" id="file-upload" multiple required />
+            <label for="file-upload">Choose a</label>
+            <div id="file-upload-filename"></div>
+          </form>
+          <br />
         </div>
-        <input
-          type="file"
-          name="file"
-          id="file"
-          class="inputfile"
-          accept="video/*"
-        />
-        <label for="file">Choose a file</label>
-        <br />
+        
         <button type="button">Submit</button>
 
         <p>File size limit : 10 MB</p>
       </div>
     </div>
     <script src="test.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   </body>
 </html>
